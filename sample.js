@@ -6,6 +6,7 @@ import sharp from "sharp";
 dotenv.config();
 
 const HF_TOKEN = process.env.HUGGINGFACE_API_KEY;
+const GITHUB_TOKEN = process.env.GITHUB_TOKEN; // <-- Add this line
 const IMAGE_PATH = "contoso_layout_sketch.jpg"; // Ensure this file exists
 const RESIZED_IMAGE_PATH = "contoso_layout_sketch_small.jpg";
 
@@ -29,6 +30,7 @@ async function runImageCaptioning() {
       headers: {
         Authorization: `Bearer ${HF_TOKEN}`,
         "Content-Type": "application/octet-stream",
+        // You can use GITHUB_TOKEN in API calls to GitHub if needed
       },
       body: imageBuffer,
     }
